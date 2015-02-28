@@ -1,0 +1,10 @@
+## Title: Paragon_Helper_UI
+## Version: 1.0.4
+## Author: Dreamer
+## Interface: 40300
+## Dependencies: Paragon_Helper
+
+UICommands.lua
+Frame.xml
+Frame.lua
+Randomizer.lua

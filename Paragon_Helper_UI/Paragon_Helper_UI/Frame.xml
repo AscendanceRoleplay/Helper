@@ -1,0 +1,813 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Frame.lua" />
+	<Frame name="Hud" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
+		<Size x="200" y="280" />
+		<Anchors>
+			<Anchor point="RIGHT">
+				<Offset y="-10" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="HudTitle" inherits="GameFontNormal" text="Paragon Helper">
+					<Size x="160" y="24" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="21" y="-17" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="currentTarget" inherits="GameFontNormal" text="No target!">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="18" y="-42" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="ctrlKey" inherits="GameFontNormal" text="FontString1">
+					<Size x="78" y="17" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="21" y="-186" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="altKey" inherits="GameFontNormal" text="FontString1">
+					<Size x="78" y="17" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="102" y="-186" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="HudButtonCommands" inherits="UIPanelButtonTemplate" text="Commands">
+				<Size x="84" y="26" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="21" y="-238" />
+					</Anchor>
+				</Anchors>
+				<Frames>
+					<Button name="HudButtonLock" inherits="UIPanelButtonTemplate" text="Lock">
+						<Size x="84" y="26" />
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="81" />
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								HudButtonLock_OnClick()
+							</OnClick>
+							<OnEvent>
+								HudButtonLock_OnEvent()
+							</OnEvent>
+						</Scripts>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnClick>
+						HudButtonCommands_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="flyStatus" inherits="UIPanelButtonTemplate" text="">
+				<Size x="162" y="24" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="18" y="-65" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						flyStatus_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HudButtonTips" inherits="UIPanelButtonTemplate" text="Tips">
+				<Size x="84" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="21" y="-209" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HudButtonTips_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="walkStatus" inherits="UIPanelButtonTemplate" text="">
+				<Size x="162" y="24" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="18" y="-127" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						walkStatus_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HudButtonFly1" inherits="UIPanelButtonTemplate" text="1">
+				<Size x="49" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="21" y="-95" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HudButtonFly1_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HudButtonFly3" inherits="UIPanelButtonTemplate" text="3">
+				<Size x="49" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="76" y="-95" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HudButtonFly3_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HudButtonFly7" inherits="UIPanelButtonTemplate" text="7">
+				<Size x="49" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="131" y="-95" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HudButtonFly7_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HudButtonWalk1" inherits="UIPanelButtonTemplate" text="1">
+				<Size x="49" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="21" y="-157" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HudButtonWalk1_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HudButtonWalk3" inherits="UIPanelButtonTemplate" text="3">
+				<Size x="49" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="76" y="-157" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HudButtonWalk3_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HudButtonWalk7" inherits="UIPanelButtonTemplate" text="7">
+				<Size x="49" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="132" y="-157" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HudButtonWalk7_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				Hud_OnLoad(self)
+			</OnLoad>
+			<OnEvent>
+				Hud_OnEvent(self, event)
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	<Frame name="CommandHud" hidden="true" parent="UIParent" movable="true" enableMouse="true">
+		<Size x="200" y="200" />
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset x="1" y="1" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="CommandHudTitle" inherits="GameFontNormal" text="Commands">
+					<Size x="161" y="22" />
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset y="-16" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="CommandHudButtonClearInventory" inherits="UIPanelButtonTemplate" text="Clear Inventory">
+				<Size x="117" y="25" />
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset y="-40" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						CommandHudButtonClearInventory_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="CommandHudButtonAddBags" inherits="UIPanelButtonTemplate" text="Add Bags">
+				<Size x="117" y="25" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="42" y="-71" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						CommandHudButtonAddBags_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="CommandHudButtonShowHelp" inherits="UIPanelButtonTemplate" text="Help">
+				<Size x="117" y="25" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="42" y="-102" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						CommandHudButtonShowHelp_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="CommandHudButtonClose" inherits="UIPanelButtonTemplate" text="Close">
+				<Size x="75" y="23" />
+				<Anchors>
+					<Anchor point="BOTTOM">
+						<Offset y="16" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						CommandHudButtonClose_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				CommandHud_OnLoad()
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="HelpHud" hidden="true" parent="UIParent">
+		<Size x="400" y="675" />
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset x="1" y="1" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="HelpHudTitle" inherits="GameFontNormal" text="Help">
+					<Size x="364" y="21" />
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset x="1" y="-14" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudClickCommands" inherits="GameFontNormal" text="Click Commands">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-32" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Control Click">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-58" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On Item Set Link - Adds Entire Item Set">
+					<Size x="163" y="31" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-106" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On Item Link - Adds Item">
+					<Size x="163" y="22" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-143" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Control Right Click">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-84" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On Faction ID - Modifies Faction to Revered">
+					<Size x="163" y="29" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-171" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On GObject Link - Spawns GObject">
+					<Size x="163" y="31" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-206" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On NPC Link - Spawns NPC">
+					<Size x="163" y="29" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-243" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On Spell - Cast Spell">
+					<Size x="163" y="15" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-278" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Control Alt Right Click">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-299" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On Item Link - Delete Item">
+					<Size x="163" y="15" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-325" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On Faction ID - Modifies Faction to Hated">
+					<Size x="163" y="37" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-346" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Control Left Click">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-389" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClicks" inherits="GameFontNormal" text="On Item Link - Dressup">
+					<Size x="163" y="15" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-415" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Alt Click">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-436" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Alt Right Click">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-462" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="On Item Link - Lookup Item">
+					<Size x="163" y="34" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-488" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudClickCommands" inherits="GameFontNormal" text="Key Bindings">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-32" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Check your in-game Key-Bindings to Assign Commands">
+					<Size x="163" y="46" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-58" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Author - Dreamer">
+					<Size x="163" y="18" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-570" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Version - 1.0.3">
+					<Size x="163" y="18" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-522" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Paragon Helper">
+					<Size x="163" y="18" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-546" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudClickCommands" inherits="GameFontNormal" text="Slash Commands">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-110" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="/fly x or /flyspeed x; Modifies the variable associated with your fly button.">
+					<Size x="163" y="64" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-136" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="/add x y z or /additem x y z; Adds all items listed after the command separated by spaces.">
+					<Size x="163" y="64" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-199" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="On Item Link - Returned Item Type If Custom Item">
+					<Size x="163" y="34" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-554" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="Right Click">
+					<Size x="163" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="19" y="-528" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="HelpHudControlClick" inherits="GameFontNormal" text="/hide or /show; Hides or Reveals the Paragon Helper UI">
+					<Size x="163" y="50" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="220" y="-269" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="HelpHudButtonClose" inherits="UIPanelButtonTemplate" text="Close">
+				<Size x="364" y="29" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="19" y="-626" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HelpHudButtonClose_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="TipsHud" hidden="true" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
+		<Size x="200" y="350" />
+		<Anchors>
+			<Anchor point="LEFT">
+				<Offset y="-10" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="TipHudTitle" inherits="GameFontNormal" text="Tips">
+					<Size x="164" y="24" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-17" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickOnThree" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-117" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickThree" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-117" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickOnOne" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-65" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickOne" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-65" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickOnTwo" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-91" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickTwo" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-91" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickOnFour" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-143" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickFour" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-143" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickOnFive" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-169" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickFive" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-169" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClick" inherits="GameFontNormal" text="">
+					<Size x="164" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-39" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickOnSix" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-195" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="rightClickSix" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-195" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="leftClick" inherits="GameFontNormal" text="">
+					<Size x="164" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-221" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="leftClickOnOne" inherits="GameFontNormalCenter" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-247" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="leftClickOne" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-247" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="leftClickOnTwo" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="17" y="-273" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="leftClickTwo" inherits="GameFontNormal" text="">
+					<Size x="82" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="99" y="-273" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				TipsHud_OnLoad()
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="ConfirmHud" hidden="true" parent="UIParent">
+		<Size x="200" y="100" />
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="ConfirmHudTitle" inherits="GameFontNormal" text="Clear inventory?">
+					<Size x="169" y="20" />
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset y="-15" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="ConfirmHudButtonConfirm" inherits="UIPanelButtonTemplate" text="Confirm">
+				<Size x="75" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="16" y="-64" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ConfirmHudButtonConfirm_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="ConfirmHudButtonClose" inherits="UIPanelButtonTemplate" text="Close">
+				<Size x="75" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="110" y="-64" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ConfirmHudButtonClose_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

@@ -1,0 +1,47 @@
+<Bindings>
+	<Binding name="TOOL Lookup" runOnUp="true" header="PARAGONHELPER" default="SHIFT-F">
+	if keystate == "down" then
+		local sName, itemLink = GetItemInfo(PARAGONtooltip);
+		local itemString = string.match(itemLink, "item[%-?%d:]+")
+		SendChatMessage(".lookup item "..sName)
+--		print(itemString)
+	end
+	</Binding>
+	<Binding name="TOOL Clear" runOnUp="true" header="PARAGONHELPER" default="SHIFT-C">
+	if keystate == "down" then
+		print("Cleaning...")
+		ClearInventory();
+	elseif keystate == "up" then
+		print("Inventory Cleared!")
+	end
+	</Binding>
+	<Binding name="TOOL Delete" runOnUp="true" header="PARAGONHELPER" default="DELETE">
+		if keystate == "down" then
+			local name = UnitName("target")
+			if strmatch(GetMouseFocus():GetName(),"^ContainerFrame") then
+				local slotButton, bag, slot = GetMouseFocus() bag, slot = slotButton:GetParent():GetID(), slotButton:GetID()
+				if bag and slot then
+					PickupContainerItem(bag, slot)
+					local infoType, info1, info2 = GetCursorInfo()
+					print(info2.." Deleted!")
+					DeleteCursorItem()
+				else
+				end
+			elseif name ~= nil then
+				if selectorVar >= 2 then 
+					print(name.." removed!");
+					SendChatMessage(".npc delete");
+				else
+					print("You're not permitted to use this command!");
+				end
+			else
+			end
+		end
+	</Binding>
+	<Binding name="TOOL Focus" runOnUp="true" header="PARAGONHELPER" default="`">
+	if keystate == "down" then
+		print( "The mouse is over " .. GetMouseFocus():GetName() );
+		else
+	end
+	</Binding>
+</Bindings>

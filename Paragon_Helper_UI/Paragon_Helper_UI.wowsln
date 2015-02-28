@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# WowAddOnStudio Solution File, Format Version 11.00
+Project("{E6E1D386-69D8-4755-9E61-0950293915FC}") = "Paragon_Helper_UI", "Paragon_Helper_UI\Paragon_Helper_UI.wowproj", "{DAA079F0-5B7D-49D0-BBD6-94CC563694B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Any CPU = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAA079F0-5B7D-49D0-BBD6-94CC563694B7}.Default|Any CPU.ActiveCfg = Default|Any CPU
+		{DAA079F0-5B7D-49D0-BBD6-94CC563694B7}.Default|Any CPU.Build.0 = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

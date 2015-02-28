@@ -1,0 +1,15 @@
+## Interface: 40300
+## Author: Dreamer
+## Title: Paragon Helper
+## Notes: Command helper based on link modifiers.
+## Version 1.0.4
+## SavedVariables: mySavedVar, frameSettings
+## SavedVariablesPerCharacter: charVar, flySpeedVar, selectorVar, walkSpeedVar
+
+Commands.lua
+Initialization.lua
+Core.lua
+Inventory_Clear.lua
+Tooltip.lua
+Bindings.lua
+Commands.lua
